@@ -1,0 +1,20 @@
+# Render.com 一鍵部署設定（連接 GitHub 儲存庫後，Render 會自動讀取這個檔案）
+# 注意：有「永久磁碟」才能保存帳號與影片，磁碟需要付費方案；免費方案重啟後資料會消失。
+services:
+  - type: web
+    name: aerix
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIR
+        value: /var/data/data
+      - key: UPLOAD_DIR
+        value: /var/data/uploads
+    disk:
+      name: aerix-data
+      mountPath: /var/data
+      sizeGB: 10

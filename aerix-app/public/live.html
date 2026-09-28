@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AERIX - 直播</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.15/dist/hls.min.js"></script>
+</head>
+<body>
+  <div id="app-header"></div>
+  <div class="site-body">
+    <div id="app-sidebar"></div>
+    <main class="main-content" id="main-content">
+
+      <div id="not-live-state" style="display:none;" class="empty-state">
+        <p id="not-live-text">目前沒有正在進行的直播。</p>
+        <a href="index.html" class="btn-secondary">回到首頁</a>
+      </div>
+
+      <div id="live-watch-content" style="display:none;">
+        <div class="live-watch-layout">
+          <div>
+            <div class="player-wrap" id="player-holder"></div>
+            <div class="live-badge-row">
+              <span class="live-badge">● LIVE</span>
+              <span id="live-elapsed" class="muted small"></span>
+              <span id="live-viewers" class="muted small"></span>
+            </div>
+            <h1 class="watch-title" id="live-title-el"></h1>
+            <div class="channel-row" style="margin:12px 0 24px;">
+              <span id="live-ch-avatar-slot"></span>
+              <div>
+                <div style="font-weight:600;" id="live-ch-name"></div>
+                <div class="muted small" id="live-ch-subs"></div>
+              </div>
+              <button class="subscribe-btn" id="live-subscribe-btn"></button>
+            </div>
+          </div>
+
+          <div class="chat-panel">
+            <div class="chat-head">即時聊天室</div>
+            <div class="chat-msgs" id="chat-msgs"></div>
+            <div class="chat-input-row">
+              <input type="text" id="chat-input" placeholder="輸入訊息並按 Enter…" maxlength="200">
+              <button id="chat-send-btn">傳送</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/live-watch.js"></script>
+</body>
+</html>

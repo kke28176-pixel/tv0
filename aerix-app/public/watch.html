@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AERIX - 觀看影片</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app-header"></div>
+  <div class="site-body">
+    <div id="app-sidebar"></div>
+    <main class="main-content" id="main-content">
+      <div class="watch-layout" id="watch-layout">
+        <div id="watch-loading" class="empty-state" style="display:none;">
+          <p id="watch-loading-text">找不到這支影片，它可能已經被移除。</p>
+          <a href="index.html" class="btn-secondary">回到首頁</a>
+        </div>
+        <div id="watch-main" style="display:none;">
+          <div class="player-wrap" id="player-holder"></div>
+          <h1 class="watch-title" id="watch-title"></h1>
+          <div class="watch-toprow">
+            <div class="channel-row">
+              <a id="channel-link" style="display:flex;align-items:center;gap:12px;">
+                <span id="channel-avatar-slot"></span>
+                <div>
+                  <div style="font-weight:600;" id="channel-name"></div>
+                  <div class="muted small" id="channel-subs"></div>
+                </div>
+              </a>
+              <button class="subscribe-btn" id="subscribe-btn"></button>
+            </div>
+            <div class="action-group">
+              <div class="action-pill split">
+                <span id="like-btn"><svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg> <span id="like-count">0</span></span>
+                <span id="dislike-btn"><svg viewBox="0 0 24 24" style="transform:rotate(180deg);"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg></span>
+              </div>
+              <button class="action-pill" id="share-btn"><svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L7.04 9.81C6.5 9.31 5.79 9 5 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg> 分享</button>
+            </div>
+          </div>
+          <div class="desc-box" id="desc-box"></div>
+
+          <div class="comments-head" id="comments-head"></div>
+          <div class="comment-form">
+            <span id="comment-avatar-slot"></span>
+            <input type="text" id="comment-input" placeholder="新增留言...">
+          </div>
+          <div id="comment-list"></div>
+        </div>
+
+        <aside id="watch-side"></aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/watch.js"></script>
+</body>
+</html>

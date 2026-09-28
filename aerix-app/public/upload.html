@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AERIX - 上傳影片</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app-header"></div>
+  <div class="site-body">
+    <div id="app-sidebar"></div>
+    <main class="main-content" id="main-content">
+      <div class="upload-wrap">
+        <h1>上傳影片</h1>
+
+        <div id="login-gate" style="display:none;" class="empty-state">
+          <p>請先登入才能上傳影片。</p>
+          <button class="btn-primary" id="gate-login-btn">登入 / 註冊</button>
+        </div>
+
+        <div id="upload-form-wrap" style="display:none;">
+          <div class="dropzone" id="dropzone">
+            <input type="file" id="video-file" accept="video/*" style="display:none;">
+            <p><strong>點擊選擇影片檔案</strong>，或將檔案拖曳到這裡</p>
+          </div>
+
+          <div id="after-select" style="display:none;">
+            <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:24px;">
+              <div>
+                <p class="small" style="font-weight:600;margin-bottom:6px;">影片預覽</p>
+                <div class="thumb-preview"><video id="preview-video" muted></video></div>
+              </div>
+              <div>
+                <p class="small" style="font-weight:600;margin-bottom:6px;">縮圖（自動擷取，或自行上傳）</p>
+                <div class="thumb-preview"><canvas id="thumb-canvas" width="320" height="180"></canvas></div>
+                <input type="file" id="custom-thumb-input" accept="image/*" style="display:none;">
+                <button type="button" class="btn-secondary" id="custom-thumb-btn" style="margin-top:8px;">上傳自訂縮圖</button>
+              </div>
+            </div>
+
+            <form class="form-grid" id="upload-form">
+              <label>標題
+                <input type="text" name="title" required maxlength="100" placeholder="幫你的影片取個吸引人的標題">
+              </label>
+              <label>簡介
+                <textarea name="description" maxlength="1000" placeholder="告訴觀眾這支影片在講什麼"></textarea>
+              </label>
+              <label>公開設定
+                <select name="visibility">
+                  <option value="public">公開</option>
+                  <option value="unlisted">不公開（知道連結的人皆可觀看）</option>
+                  <option value="private">私人</option>
+                </select>
+              </label>
+              <div id="upload-progress" class="muted small" style="display:none;"></div>
+              <div style="display:flex;gap:12px;margin-top:8px;">
+                <button type="submit" class="btn-primary">發布</button>
+                <button type="button" class="btn-secondary" id="cancel-upload">取消</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/upload.js"></script>
+</body>
+</html>

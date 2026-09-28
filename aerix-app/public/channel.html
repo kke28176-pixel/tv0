@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AERIX - 頻道</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app-header"></div>
+  <div class="site-body">
+    <div id="app-sidebar"></div>
+    <main class="main-content" id="main-content">
+      <div id="channel-not-found" style="display:none;" class="empty-state">
+        <p>找不到這個頻道。</p>
+        <a href="index.html" class="btn-secondary">回到首頁</a>
+      </div>
+      <div id="channel-content" style="display:none;">
+        <div class="channel-banner" id="channel-banner"></div>
+        <div class="channel-header">
+          <span id="ch-avatar-slot"></span>
+          <div style="flex:1;">
+            <h1 class="channel-name" id="ch-name"></h1>
+            <div class="muted" id="ch-meta"></div>
+            <div class="muted small" id="ch-desc"></div>
+          </div>
+          <button class="subscribe-btn" id="ch-subscribe-btn"></button>
+          <a href="channel-manage.html" class="btn-secondary" id="ch-manage-link" style="display:none;">管理頻道</a>
+        </div>
+        <div id="ch-live-banner"></div>
+        <div class="channel-tabs"><button class="channel-tab active">影片</button></div>
+        <div class="video-grid" id="ch-video-grid"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/channel.js"></script>
+</body>
+</html>

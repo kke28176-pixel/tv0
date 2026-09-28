@@ -1,0 +1,19 @@
+{
+  "name": "aerix",
+  "version": "1.0.0",
+  "description": "AERIX - 自架的 YouTube 風格影音社群平台（Express + SQLite + RTMP 直播）",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.0",
+    "better-sqlite3": "^11.0.0",
+    "multer": "^1.4.5-lts.1",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.0",
+    "cookie-parser": "^1.4.6",
+    "node-media-server": "^2.6.0",
+    "ffmpeg-static": "^5.2.0"
+  }
+}

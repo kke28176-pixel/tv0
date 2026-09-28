@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AERIX - 管理頻道</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app-header"></div>
+  <div class="site-body">
+    <div id="app-sidebar"></div>
+    <main class="main-content" id="main-content">
+      <div id="login-gate" style="display:none;" class="empty-state">
+        <p>請先登入才能管理頻道。</p>
+        <button class="btn-primary" id="gate-login-btn">登入 / 註冊</button>
+      </div>
+
+      <div class="manage-wrap" id="manage-wrap" style="display:none;">
+        <h1>管理頻道</h1>
+        <div class="manage-tabs">
+          <button class="manage-tab active" data-tab="profile">頻道設定</button>
+          <button class="manage-tab" data-tab="videos">影片管理</button>
+          <button class="manage-tab" data-tab="live">直播</button>
+        </div>
+
+        <!-- 頻道設定 -->
+        <section class="manage-panel active" id="panel-profile">
+          <div class="manage-preview-banner" id="preview-banner"></div>
+          <input type="file" id="banner-upload" accept="image/*" style="display:none;">
+          <button type="button" class="btn-secondary" id="banner-upload-btn" style="margin-bottom:20px;">更換橫幅</button>
+
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+            <span id="preview-avatar-slot"></span>
+            <input type="file" id="avatar-upload" accept="image/*" style="display:none;">
+            <button type="button" class="btn-secondary" id="avatar-upload-btn">更換大頭貼</button>
+          </div>
+
+          <form class="form-grid" id="profile-form">
+            <label>頻道名稱<input type="text" name="name" required maxlength="40"></label>
+            <label>頻道代稱（handle）<input type="text" name="handle" required maxlength="30" placeholder="@your-handle"></label>
+            <label>頻道簡介<textarea name="description" maxlength="500"></textarea></label>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <button type="submit" class="btn-primary">儲存變更</button>
+              <span class="save-msg" id="profile-save-msg"></span>
+            </div>
+          </form>
+        </section>
+
+        <!-- 影片管理 -->
+        <section class="manage-panel" id="panel-videos">
+          <p class="muted small" style="margin-bottom:16px;">在這裡可以檢查你發佈的所有影片，並且修改標題、簡介、縮圖或公開設定。</p>
+          <div id="manage-video-list"></div>
+        </section>
+
+        <!-- 直播 -->
+        <section class="manage-panel" id="panel-live">
+          <div id="live-status-box" class="stream-info-box"></div>
+
+          <label style="font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:6px;max-width:420px;margin-bottom:12px;">
+            直播標題（下次開播時會使用這個標題）
+            <input type="text" id="live-title-input" maxlength="80" placeholder="幫這場直播取個標題" style="border:1px solid var(--border);border-radius:8px;padding:10px 12px;background:var(--bg);color:var(--text);">
+          </label>
+          <button class="btn-secondary" id="save-live-title-btn">儲存直播標題</button>
+          <span class="save-msg" id="live-title-save-msg"></span>
+
+          <div class="stream-info-box">
+            <p style="font-weight:700;margin-top:0;">在 OBS 裡這樣設定：</p>
+            <p>1. OBS →「設定」→「串流」→ 服務選「自訂...」</p>
+            <div class="copy-row"><strong>伺服器：</strong><code id="rtmp-url"></code> <button class="btn-secondary" data-copy="rtmp-url" style="padding:4px 10px;font-size:12px;">複製</button></div>
+            <div class="copy-row" id="rtmp-lan-row" style="display:none;"><strong>（區網其他電腦上的 OBS 可改用）：</strong><code id="rtmp-url-lan"></code></div>
+            <div class="copy-row"><strong>串流金鑰：</strong><code id="stream-key"></code> <button class="btn-secondary" data-copy="stream-key" style="padding:4px 10px;font-size:12px;">複製</button></div>
+            <p class="muted small">2. 貼好之後按「開始串流」，回到這個頁面幾秒後應該就會顯示「直播中」。串流金鑰請勿外流，知道的人都能冒用你的頻道開播。</p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/channel-manage.js"></script>
+</body>
+</html>
